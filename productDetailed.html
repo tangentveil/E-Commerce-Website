@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detailed</title>
+    <link rel="stylesheet" href="./productDetailedStyle.css">
+    <link rel="stylesheet" 
+  href="https://pro.fontawesome.com/releases/v5.15.4/css/all.css">
+</head>
+<body>
+
+    <!-- header and Nav Menu -->
+    <section id="header">
+        <a href="#">
+            <img src="./img/logo.png" class="logo" alt="">
+        </a>
+
+        <div>
+            <ul id="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a class="active" href="shop.html">shop</a></li>
+                <li><a href="blog.html">blog</a></li>
+                <li><a href="About.html">about</a></li>
+                <li><a href="contact.html">contact</a></li>
+                <!-- id="lg-bag" was added when we don't want show it in sidebar list -->
+                <li id="lg-bag"><a href="cart.html">
+                    <i class="far fa-shopping-bag"></i>
+                </a></li>
+                <button class="close-btn">
+                    <i class="far fa-times"></i>
+                </button>
+            </ul>
+        </div>
+
+        <!-- moblie div was added when we started to use media query -->
+        <div id="mobile">
+            <a href="cart.html">
+                <i class="far fa-shopping-bag"></i>
+            </a>
+            <button class="toggle-btn">
+                <i id="bar" class="fas fa-outdent"></i>
+            </button>
+        </div>
+    </section>
+
+
+    <section id="pro-detailes" class="section-1">
+        <div class="single-pro-image">
+            <img src="./img/products/f1.jpg" width="100%" id="mainImg" alt="">
+
+            <div class="small-img-group">
+                <div class="small-img-col">
+                    <img src="./img/products/f1.jpg" width="100%" class="small-img" alt="">
+                </div>
+    
+                <div class="small-img-col">
+                    <img src="./img/products/f2.jpg" width="100%" class="small-img" alt="">
+                </div>
+    
+                <div class="small-img-col">
+                    <img src="./img/products/f3.jpg" width="100%" class="small-img" alt="">
+                </div>
+    
+                <div class="small-img-col">
+                    <img src="./img/products/f4.jpg" width="100%" class="small-img" alt="">
+                </div>
+            </div>
+        </div>
+
+        <div class="single-pro-details">
+            <h6>Home / T-shirt</h6>
+            <h4>Men's Fashion T-Shirt</h4>
+            <h2>$139.00</h2>
+            <select name="" id="">
+                <option value="">Select Size</option>
+                <option value="">XL</option>
+                <option value="">XXL</option>
+                <option value="">Small</option>
+                <option value="">Large</option>
+            </select>
+            <input type="number" value="1">
+            <button class="normal">Add To Cart</button>
+            <h4>Product Details</h4>
+            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam illo ea deleniti neque tempore totam accusantium quos, voluptatibus itaque necessitatibus magni. Quia at minima, fugiat harum repellat nobis corporis libero hic asperiores similique cupiditate minus impedit labore necessitatibus reprehenderit ea.</span>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+
+    <section class="product1 section-p1">
+        <h2>Featured products</h2>
+        <p>Summer Collection New Morden Design</p>
+        <div class="pro-container">
+            <div class="pro">
+                <img src="./img/products/f1.jpg" alt="">
+                <div class="des">
+                    <span>adidas</span>
+                    <h5>Cartoon Astronaut T-Shirts</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>$78</h4>
+                </div>
+                <a href="#">
+                    <i class="fal fa-shopping-cart cart"></i>
+                </a>
+            </div>
+
+            <div class="pro">
+                <img src="./img/products/f2.jpg" alt="">
+                <div class="des">
+                    <span>adidas</span>
+                    <h5>Cartoon Astronaut T-Shirts</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>$78</h4>
+                </div>
+                <a href="#">
+                    <i class="fal fa-shopping-cart cart"></i>
+                </a>
+            </div>
+
+            <div class="pro">
+                <img src="./img/products/f3.jpg" alt="">
+                <div class="des">
+                    <span>adidas</span>
+                    <h5>Cartoon Astronaut T-Shirts</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>$78</h4>
+                </div>
+                <a href="#">
+                    <i class="fal fa-shopping-cart cart"></i>
+                </a>
+            </div>
+
+            <div class="pro">
+                <img src="./img/products/f4.jpg" alt="">
+                <div class="des">
+                    <span>adidas</span>
+                    <h5>Cartoon Astronaut T-Shirts</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>$78</h4>
+                </div>
+                <a href="#">
+                    <i class="fal fa-shopping-cart cart"></i>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Newsletters -->
+    <section id="newsletter" class="section-p1">
+        <div class="newstext section-p1">
+            <h4>Sign Up For NewsLetter</h4>
+            <p>Get E-mail updates about our latest shop and <span>special offers.</span></p>
+        </div>
+
+        <div class="form section-p1">
+            <input type="text" placeholder="Enter your Email Address">
+            <button class="normal">Sign Up</button>
+        </div>
+    </section>
+
+
+    <!-- footer -->
+
+    <footer class="section-p1">
+        <div class="col">
+            <img src="./img/logo.png" class="logo" alt="">
+            <h4>Contact</h4>
+            <p><strong>Address: </strong>j jkbn kjn kjnk jgjkngjk</p>
+            <p><strong>Phone: </strong>jgjk jhbhjbhjngjk</p>
+            <p><strong>Hours: </strong>jg kjhjkdshn jknjkngjk</p>
+            <div class="follow">
+                <h4>Follow Us</h4>
+                <div class="icon">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-pinterest-p"></i>
+                    <i class="fab fa-youtube"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <h4>About</h4>
+            <a href="#">About Us</a>
+            <a href="#">Delivery information</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Contact Us</a>
+        </div>
+
+        <div class="col">
+            <h4>My Account</h4>
+            <a href="#">Sign In</a>
+            <a href="#">View Cart</a>
+            <a href="#">My Wishlist</a>
+            <a href="#">Track My Order</a>
+            <a href="#">Help</a>
+        </div>
+
+        <div class="col install">
+            <h4>Install App</h4>
+            <p>From App Store or Google Play</p>
+            <div class="row">
+                <img src="./img/pay/app.jpg" alt="">
+                <img src="./img/pay/play.jpg" alt="">
+            </div>
+            <p>Secured payment Gateways</p>
+            <img src="./img/pay/pay.png" alt="">
+        </div>
+
+
+        <!-- Copyright -->
+        <div class="copyright">
+            <p>2022 - HTML CSS Ecommerce Template</p>
+        </div>
+    </footer>
+
+
+    <script>
+        let mainImg = document.querySelector('#mainImg');
+        let smallImg = document.querySelectorAll('.small-img');
+
+        smallImg[0].onclick = function(){
+            // source of main img will be replace by source of small img
+            mainImg.src = smallImg[0].src;
+        }
+
+        smallImg[1].onclick = function(){
+            mainImg.src = smallImg[1].src;
+        }
+
+        smallImg[2].onclick = function(){
+            mainImg.src = smallImg[2].src;
+        }
+
+        smallImg[3].onclick = function(){
+            mainImg.src = smallImg[3].src;
+        }
+    </script>
+
+</body>
+</html>
