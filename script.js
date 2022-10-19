@@ -35,3 +35,58 @@ window.addEventListener('scroll', ()=>{
         topLink.classList.remove('show-link');
     }
 });
+
+
+// Features
+
+const features = [
+  {
+    id: 1,
+    title: "Free Shipping",
+    img: "./img/features/f1.png",
+  },
+  {
+    id: 2,
+    itle: "Online Order",
+    img: "./img/features/f2.png",
+  },
+  {
+    id: 3,
+    title: "Save Money",
+    img: "./img/features/f3.png",
+  },
+  {
+    id: 4,
+    title: "Promotions",
+    img: "./img/features/f4.png",
+  },
+  {
+    id: 5,
+    title: "happy Sell",
+    img: "./img/features/f5.png",
+  },
+  {
+    id: 6,
+    title: "F24/7 Support",
+    img: "./img/features/f6.png",
+  },
+];
+
+
+const featureSection = document.getElementById('feature');
+
+window.addEventListener('DOMContentLoaded', ()=>{
+    displayFeatures(features);
+});
+
+function displayFeatures(items){
+    let displayFeatureBox = items.map((item)=>{
+        return `<div class="fe-box">
+        <img src=${item.img} alt="">
+        <h6>${item.title}</h6>
+        </div>`;
+    });
+
+    displayFeatureBox = displayFeatureBox.join("");
+    featureSection.innerHTML = displayFeatureBox;
+}
