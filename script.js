@@ -142,6 +142,40 @@ const products = [
   },
 ];
 
+const productContainer = document.querySelector(".pro-container");
+
+window.addEventListener("DOMContentLoaded", (e) => {
+  productContainer.innerHTML = displayProducts(products);
+});
+
+function displayProducts(items) {
+  let displayProduct = items.map((item) => {
+    return `<div class="pro">
+        <img src=${item.img} alt="">
+        <div class="des">
+            <span>${item.brand}</span>
+            <h5>${item.title}</h5>
+            <div class="star">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <h4>$78</h4>
+        </div>
+        <a href="#">
+            <i class="fal fa-shopping-cart cart"></i>
+        </a>
+    </div>`;
+  });
+  return displayProduct.join("");
+}
+
+
+
+//********************** */ New Arrival Product
+
 const Newproducts = [
   {
     id: 1,
@@ -193,36 +227,153 @@ const Newproducts = [
   },
 ];
 
-const productContainer = document.querySelector(".pro-container");
 const newArrivalContainer = document.querySelector(".newArrival-Container");
 
-window.addEventListener("DOMContentLoaded", () => {
-  displayProducts(products);
-  displayProducts(Newproducts);
+window.addEventListener("DOMContentLoaded", (e) => {
+  newArrivalContainer.innerHTML = displayProducts(Newproducts);
 });
 
-function displayProducts(items) {
-  let displayProduct = items.map((item) => {
-    return `<div class="pro">
-        <img src=${item.img} alt="">
-        <div class="des">
-            <span>${item.brand}</span>
-            <h5>${item.title}</h5>
-            <div class="star">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-            </div>
-            <h4>$78</h4>
+
+
+//********************** */ shop Product
+
+const shopContainer = document.querySelector(".shop-container");
+
+window.addEventListener("DOMContentLoaded", (e) => {
+  shopContainer.innerHTML = displayProducts(Newproducts);
+});
+
+
+
+//*********************** */ blog
+
+const blogs = [
+  {
+    id: 1,
+    title: "The Cotton-Jersey Aip-Up Hoodie",
+    img: "./img/blog/b1.jpg",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates iure magnam maxime officiis possimus fugiat, excepturi sed cupiditate! Natus omnis cum non nisi minima repellendus atque earum id officia exercitationem?",
+    date: "13/01",
+  },
+  {
+    id: 2,
+    title: "The Cotton-Jersey Aip-Up Hoodie",
+    img: "./img/blog/b2.jpg",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates iure magnam maxime officiis possimus fugiat, excepturi sed cupiditate! Natus omnis cum non nisi minima repellendus atque earum id officia exercitationem?",
+    date: "13/01",
+  },
+  {
+    id: 3,
+    title: "The Cotton-Jersey Aip-Up Hoodie",
+    img: "./img/blog/b3.jpg",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates iure magnam maxime officiis possimus fugiat, excepturi sed cupiditate! Natus omnis cum non nisi minima repellendus atque earum id officia exercitationem?",
+    date: "13/01",
+  },
+  {
+    id: 4,
+    title: "The Cotton-Jersey Aip-Up Hoodie",
+    img: "./img/blog/b4.jpg",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates iure magnam maxime officiis possimus fugiat, excepturi sed cupiditate! Natus omnis cum non nisi minima repellendus atque earum id officia exercitationem?",
+    date: "13/01",
+  },
+  {
+    id: 5,
+    title: "The Cotton-Jersey Aip-Up Hoodie",
+    img: "./img/blog/b5.jpg",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates iure magnam maxime officiis possimus fugiat, excepturi sed cupiditate! Natus omnis cum non nisi minima repellendus atque earum id officia exercitationem?",
+    date: "13/01",
+  },
+  {
+    id: 6,
+    title: "The Cotton-Jersey Aip-Up Hoodie",
+    img: "./img/blog/b6.jpg",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates iure magnam maxime officiis possimus fugiat, excepturi sed cupiditate! Natus omnis cum non nisi minima repellendus atque earum id officia exercitationem?",
+    date: "13/01",
+  },
+  {
+    id: 7,
+    title: "The Cotton-Jersey Aip-Up Hoodie",
+    img: "./img/blog/b7.jpg",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates iure magnam maxime officiis possimus fugiat, excepturi sed cupiditate! Natus omnis cum non nisi minima repellendus atque earum id officia exercitationem?",
+    date: "13/01",
+  },
+];
+
+const blogContainer = document.getElementById("blog");
+
+window.addEventListener("DOMContentLoaded", () => {
+  displayBlogs(blogs);
+});
+
+function displayBlogs(items) {
+  let displayBlog = items.map((item) => {
+    return `<div class="blog-box">
+        <div class="blog-img">
+            <img src=${item.img} alt="">
         </div>
-        <a href="#">
-            <i class="fal fa-shopping-cart cart"></i>
-        </a>
+        <div class="blog-detailes">
+            <h4>${item.title}</h4>
+            <p>${item.description}</p>
+            <a href="#">CONTINUE READING</a>
+        </div>
+        <h1>${item.date}</h1>
     </div>`;
   });
-  displayProduct = displayProduct.join("");
-  productContainer.innerHTML = displayProduct;
-  newArrivalContainer.innerHTML = displayProduct;
+
+  blogContainer.innerHTML = displayBlog.join("");
+}
+
+
+//*********************** */ cart products
+
+const addedProducts = [
+    {
+        id: 1,
+        img: "./img/products/f1.jpg",
+        title: "Cartoon Astronaut T-Shirts",
+        price: "$118",
+        subtotal: "$118"
+    },
+    {
+        id: 2,
+        img: "./img/products/f2.jpg",
+        title: "Cartoon Astronaut T-Shirts",
+        price: "$118",
+        subtotal: "$118"
+    },
+    {
+        id: 3,
+        img: "./img/products/f3.jpg",
+        title: "Cartoon Astronaut T-Shirts",
+        price: "$118",
+        subtotal: "$118"
+    }
+];
+
+const cartContainer = document.getElementById("t-rows");
+
+window.addEventListener("DOMContentLoaded", () => {
+  displayRows(addedProducts);
+});
+
+function displayRows(items) {
+  let displayROw = items.map((item) => {
+    return `<tr>
+        <td><a href=""><i class="far fa-times-circle"></i></a></td>
+        <td><img src=${item.img} alt=""></td>
+        <td>${item.title}</td>
+        <td>${item.price}</td>
+        <td><input type="number" value="1" min="0"></td>
+        <td>${item.subtotal}</td>
+    </tr>`;
+  });
+
+  cartContainer.innerHTML = displayROw.join("");
 }
