@@ -172,8 +172,6 @@ function displayProducts(items) {
   return displayProduct.join("");
 }
 
-
-
 //********************** */ New Arrival Product
 
 const Newproducts = [
@@ -233,17 +231,27 @@ window.addEventListener("DOMContentLoaded", (e) => {
   newArrivalContainer.innerHTML = displayProducts(Newproducts);
 });
 
-
-
 //********************** */ shop Product
 
+const shopProducts = products.concat(Newproducts);
 const shopContainer = document.querySelector(".shop-container");
 
-window.addEventListener("DOMContentLoaded", (e) => {
-  shopContainer.innerHTML = displayProducts(Newproducts);
+//*************** */ pagination
+
+const prevBtn = document.getElementById("prev-btn");
+const nextBtn = document.getElementById("next-btn");
+
+prevBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+
+shopContainer.innerHTML = displayProducts(products);
 });
 
+nextBtn.addEventListener("click", (e) => {
+  e.preventDefault();
 
+shopContainer.innerHTML = displayProducts(Newproducts);
+});
 
 //*********************** */ blog
 
@@ -330,31 +338,30 @@ function displayBlogs(items) {
   blogContainer.innerHTML = displayBlog.join("");
 }
 
-
 //*********************** */ cart products
 
 const addedProducts = [
-    {
-        id: 1,
-        img: "./img/products/f1.jpg",
-        title: "Cartoon Astronaut T-Shirts",
-        price: "$118",
-        subtotal: "$118"
-    },
-    {
-        id: 2,
-        img: "./img/products/f2.jpg",
-        title: "Cartoon Astronaut T-Shirts",
-        price: "$118",
-        subtotal: "$118"
-    },
-    {
-        id: 3,
-        img: "./img/products/f3.jpg",
-        title: "Cartoon Astronaut T-Shirts",
-        price: "$118",
-        subtotal: "$118"
-    }
+  {
+    id: 1,
+    img: "./img/products/f1.jpg",
+    title: "Cartoon Astronaut T-Shirts",
+    price: "$118",
+    subtotal: "$118",
+  },
+  {
+    id: 2,
+    img: "./img/products/f2.jpg",
+    title: "Cartoon Astronaut T-Shirts",
+    price: "$118",
+    subtotal: "$118",
+  },
+  {
+    id: 3,
+    img: "./img/products/f3.jpg",
+    title: "Cartoon Astronaut T-Shirts",
+    price: "$118",
+    subtotal: "$118",
+  },
 ];
 
 const cartContainer = document.getElementById("t-rows");
