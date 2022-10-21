@@ -3,6 +3,14 @@ const toggleBtn = document.querySelector(".toggle-btn");
 const closeBtn = document.querySelector(".close-btn");
 const header = document.getElementById("header");
 const topLink = document.querySelector(".top-link");
+// const anchorTag = document.getElementsByTagName('a');
+
+// anchorTag.addEventListener('click', ()=>{
+//     // console.log(anchorTag.classL);
+//     if(!anchorTag.target.classList.contains('active')){
+//         anchorTag.classList.add('active');
+//     }
+// });
 
 //**************** */ toggle button
 
@@ -73,9 +81,11 @@ const features = [
 
 const featureSection = document.getElementById("feature");
 
-window.addEventListener("DOMContentLoaded", () => {
-  displayFeatures(features);
-});
+if (featureSection) {
+  window.addEventListener("DOMContentLoaded", () => {
+    displayFeatures(features);
+  });
+}
 
 function displayFeatures(items) {
   let displayFeatureBox = items.map((item) => {
@@ -85,8 +95,11 @@ function displayFeatures(items) {
         </div>`;
   });
 
-  displayFeatureBox = displayFeatureBox.join("");
-  featureSection.innerHTML = displayFeatureBox;
+  //   console.log(navbar.children[0].nextElementSibling.classList.contains('a.active'));
+
+  // console.log()
+
+  featureSection.innerHTML = displayFeatureBox.join("");
 }
 
 //********************** */ Featured Product
@@ -144,9 +157,11 @@ const products = [
 
 const productContainer = document.querySelector(".pro-container");
 
-window.addEventListener("DOMContentLoaded", (e) => {
-  productContainer.innerHTML = displayProducts(products);
-});
+if (productContainer) {
+  window.addEventListener("DOMContentLoaded", (e) => {
+    productContainer.innerHTML = displayProducts(products);
+  });
+}
 
 function displayProducts(items) {
   let displayProduct = items.map((item) => {
@@ -227,9 +242,11 @@ const Newproducts = [
 
 const newArrivalContainer = document.querySelector(".newArrival-Container");
 
-window.addEventListener("DOMContentLoaded", (e) => {
-  newArrivalContainer.innerHTML = displayProducts(Newproducts);
-});
+if (newArrivalContainer) {
+  window.addEventListener("DOMContentLoaded", (e) => {
+    newArrivalContainer.innerHTML = displayProducts(Newproducts);
+  });
+}
 
 //********************** */ shop Product
 
@@ -240,18 +257,42 @@ const shopContainer = document.querySelector(".shop-container");
 
 const prevBtn = document.getElementById("prev-btn");
 const nextBtn = document.getElementById("next-btn");
+const pagination = document.getElementById("pagination");
 
-prevBtn.addEventListener("click", (e) => {
-  e.preventDefault();
+let count = 0;
+if (pagination) {
+  // ********** on blog page
+  if (blogContainer) {
+    prevBtn.addEventListener("click", (e) => {
+      e.preventDefault();
 
-shopContainer.innerHTML = displayProducts(products);
-});
+      count--;
+      if (count < 0) count = blogs.length - 1;
+      blogContainer.innerHTML = displayBlogs(count);
+    });
 
-nextBtn.addEventListener("click", (e) => {
-  e.preventDefault();
+    nextBtn.addEventListener("click", (e) => {
+      e.preventDefault();
 
-shopContainer.innerHTML = displayProducts(Newproducts);
-});
+      count++;
+      if (count > blogs.length - 1) count = 0;
+      blogContainer.innerHTML = displayBlogs(count);
+    });
+  }
+
+  // ************ on shop page
+  if (shopContainer) {
+    prevBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      shopContainer.innerHTML = displayProducts(products);
+    });
+
+    nextBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      shopContainer.innerHTML = displayProducts(Newproducts);
+    });
+  }
+}
 
 //*********************** */ blog
 
@@ -270,7 +311,7 @@ const blogs = [
     img: "./img/blog/b2.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates iure magnam maxime officiis possimus fugiat, excepturi sed cupiditate! Natus omnis cum non nisi minima repellendus atque earum id officia exercitationem?",
-    date: "13/01",
+    date: "13/11",
   },
   {
     id: 3,
@@ -278,7 +319,7 @@ const blogs = [
     img: "./img/blog/b3.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates iure magnam maxime officiis possimus fugiat, excepturi sed cupiditate! Natus omnis cum non nisi minima repellendus atque earum id officia exercitationem?",
-    date: "13/01",
+    date: "03/01",
   },
   {
     id: 4,
@@ -286,7 +327,7 @@ const blogs = [
     img: "./img/blog/b4.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates iure magnam maxime officiis possimus fugiat, excepturi sed cupiditate! Natus omnis cum non nisi minima repellendus atque earum id officia exercitationem?",
-    date: "13/01",
+    date: "24/01",
   },
   {
     id: 5,
@@ -294,7 +335,7 @@ const blogs = [
     img: "./img/blog/b5.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates iure magnam maxime officiis possimus fugiat, excepturi sed cupiditate! Natus omnis cum non nisi minima repellendus atque earum id officia exercitationem?",
-    date: "13/01",
+    date: "11/01",
   },
   {
     id: 6,
@@ -302,7 +343,7 @@ const blogs = [
     img: "./img/blog/b6.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates iure magnam maxime officiis possimus fugiat, excepturi sed cupiditate! Natus omnis cum non nisi minima repellendus atque earum id officia exercitationem?",
-    date: "13/01",
+    date: "21/01",
   },
   {
     id: 7,
@@ -310,32 +351,35 @@ const blogs = [
     img: "./img/blog/b7.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates iure magnam maxime officiis possimus fugiat, excepturi sed cupiditate! Natus omnis cum non nisi minima repellendus atque earum id officia exercitationem?",
-    date: "13/01",
+    date: "29/01",
   },
 ];
 
-const blogContainer = document.getElementById("blog");
+var blogContainer = document.getElementById("blog");
 
-window.addEventListener("DOMContentLoaded", () => {
-  displayBlogs(blogs);
-});
+if (blogContainer) {
+  window.addEventListener("DOMContentLoaded", () => {
+    blogContainer.innerHTML = displayBlogs(count);
+  });
+}
 
-function displayBlogs(items) {
-  let displayBlog = items.map((item) => {
-    return `<div class="blog-box">
+function displayBlogs(itemCount) {
+  return `<div class="blog-box">
         <div class="blog-img">
-            <img src=${item.img} alt="">
+            <img src=${blogs[itemCount].img} alt="">
         </div>
         <div class="blog-detailes">
-            <h4>${item.title}</h4>
-            <p>${item.description}</p>
+            <h4>${blogs[itemCount].title}</h4>
+            <p>${blogs[itemCount].description}</p>
             <a href="#">CONTINUE READING</a>
         </div>
-        <h1>${item.date}</h1>
+        <h1>${blogs[itemCount].date}</h1>
     </div>`;
-  });
 
-  blogContainer.innerHTML = displayBlog.join("");
+  // const item = blogs[items];
+  // img.src
+
+  //   blogContainer.innerHTML = displayBlog.join("");
 }
 
 //*********************** */ cart products
@@ -366,9 +410,11 @@ const addedProducts = [
 
 const cartContainer = document.getElementById("t-rows");
 
-window.addEventListener("DOMContentLoaded", () => {
-  displayRows(addedProducts);
-});
+if (cartContainer) {
+  window.addEventListener("DOMContentLoaded", () => {
+    displayRows(addedProducts);
+  });
+}
 
 function displayRows(items) {
   let displayROw = items.map((item) => {
