@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Detailed</title>
     <link rel="stylesheet" href="./Style.css">
-    <link rel="stylesheet" 
-  href="https://pro.fontawesome.com/releases/v5.15.4/css/all.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.15.4/css/all.css">
 </head>
+
 <body>
 
     <!-- header and Nav Menu -->
@@ -26,8 +27,8 @@
                 <li><a href="contact.html">contact</a></li>
                 <!-- id="lg-bag" was added when we don't want show it in sidebar list -->
                 <li id="lg-bag"><a href="cart.html">
-                    <i class="far fa-shopping-bag"></i>
-                </a></li>
+                        <i class="far fa-shopping-bag"></i>
+                    </a></li>
                 <button class="close-btn">
                     <i class="far fa-times"></i>
                 </button>
@@ -48,25 +49,6 @@
 
     <section id="pro-detailes" class="section-1">
         <div class="single-pro-image">
-            <img src="./img/products/f1.jpg" width="100%" id="mainImg" alt="">
-
-            <div class="small-img-group">
-                <div class="small-img-col">
-                    <img src="./img/products/f1.jpg" width="100%" class="small-img" alt="">
-                </div>
-    
-                <div class="small-img-col">
-                    <img src="./img/products/f2.jpg" width="100%" class="small-img" alt="">
-                </div>
-    
-                <div class="small-img-col">
-                    <img src="./img/products/f3.jpg" width="100%" class="small-img" alt="">
-                </div>
-    
-                <div class="small-img-col">
-                    <img src="./img/products/f4.jpg" width="100%" class="small-img" alt="">
-                </div>
-            </div>
         </div>
 
         <div class="single-pro-details">
@@ -81,9 +63,12 @@
                 <option value="">Large</option>
             </select>
             <input type="number" value="1">
-            <button class="normal">Add To Cart</button>
+            <button class="normal add-to-cart">Add To Cart</button>
             <h4>Product Details</h4>
-            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam illo ea deleniti neque tempore totam accusantium quos, voluptatibus itaque necessitatibus magni. Quia at minima, fugiat harum repellat nobis corporis libero hic asperiores similique cupiditate minus impedit labore necessitatibus reprehenderit ea.</span>
+            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam illo ea deleniti neque tempore totam
+                accusantium quos, voluptatibus itaque necessitatibus magni. Quia at minima, fugiat harum repellat nobis
+                corporis libero hic asperiores similique cupiditate minus impedit labore necessitatibus reprehenderit
+                ea.</span>
         </div>
     </section>
 
@@ -252,28 +237,57 @@
 
 
     <script>
-        let mainImg = document.querySelector('#mainImg');
-        let smallImg = document.querySelectorAll('.small-img');
+        const urlParams = new URLSearchParams(window.location.search);
+        const index = urlParams.get('index');
+        const details = document.querySelector(".single-pro-image")
+        details.innerHTML = `<img src="./img/products/f${parseInt(index) + 1}.jpg" width="100%" id="mainImg" alt="">
 
-        smallImg[0].onclick = function(){
+                            <div class="small-img-group">
+                                <div class="small-img-col">
+                                    <img src="./img/products/f1.jpg" width="100%" class="small-img" alt="">
+                                </div>
+
+                                <div class="small-img-col">
+                                    <img src="./img/products/f2.jpg" width="100%" class="small-img" alt="">
+                                </div>
+
+                                <div class="small-img-col">
+                                    <img src="./img/products/f3.jpg" width="100%" class="small-img" alt="">
+                                </div>
+
+                                <div class="small-img-col">
+                                    <img src="./img/products/f4.jpg" width="100%" class="small-img" alt="">
+                                </div>
+                            </div>`
+
+        let mainImg = document.querySelector("#mainImg");
+        let smallImg = document.querySelectorAll(".small-img");
+
+        let imgForcart;
+
+        smallImg[0].onclick = function () {
             // source of main img will be replace by source of small img
             mainImg.src = smallImg[0].src;
-        }
+        };
 
-        smallImg[1].onclick = function(){
+        smallImg[1].onclick = function () {
             mainImg.src = smallImg[1].src;
-        }
+        };
 
-        smallImg[2].onclick = function(){
+        smallImg[2].onclick = function () {
             mainImg.src = smallImg[2].src;
-        }
+        };
 
-        smallImg[3].onclick = function(){
+        smallImg[3].onclick = function () {
             mainImg.src = smallImg[3].src;
-        }
+        };
+
+        imgForcart = mainImg.src;
+
     </script>
 
     <script src="./script.js"></script>
 
 </body>
+
 </html>

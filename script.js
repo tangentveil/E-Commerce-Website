@@ -3,14 +3,8 @@ const toggleBtn = document.querySelector(".toggle-btn");
 const closeBtn = document.querySelector(".close-btn");
 const header = document.getElementById("header");
 const topLink = document.querySelector(".top-link");
-// const anchorTag = document.getElementsByTagName('a');
-
-// anchorTag.addEventListener('click', ()=>{
-//     // console.log(anchorTag.classL);
-//     if(!anchorTag.target.classList.contains('active')){
-//         anchorTag.classList.add('active');
-//     }
-// });
+var blogContainer = document.getElementById("blog");
+const cartContainer = document.getElementById("t-rows");
 
 //**************** */ toggle button
 
@@ -164,8 +158,8 @@ if (productContainer) {
 }
 
 function displayProducts(items) {
-  let displayProduct = items.map((item) => {
-    return `<div class="pro">
+  let displayProduct = items.map((item, index) => {
+    return `<div class="pro" onclick="window.location.href='productDetailed.html?index=${index}'">
         <img src=${item.img} alt="">
         <div class="des">
             <span>${item.brand}</span>
@@ -185,6 +179,112 @@ function displayProducts(items) {
     </div>`;
   });
   return displayProduct.join("");
+}
+
+//********************** */ Product Details
+
+// const singleproimage = document.querySelector(".single-pro-image");
+// window.addEventListener("DOMContentLoaded", () => {
+//   singleproimage.innerHTML = `<img src="./img/products/f1.jpg" width="100%" id="mainImg" alt="">
+
+//   <div class="small-img-group">
+//       <div class="small-img-col">
+//           <img src="./img/products/f1.jpg" width="100%" class="small-img" alt="">
+//       </div>
+
+//       <div class="small-img-col">
+//           <img src="./img/products/f2.jpg" width="100%" class="small-img" alt="">
+//       </div>
+
+//       <div class="small-img-col">
+//           <img src="./img/products/f3.jpg" width="100%" class="small-img" alt="">
+//       </div>
+
+//       <div class="small-img-col">
+//           <img src="./img/products/f4.jpg" width="100%" class="small-img" alt="">
+//       </div>`;
+// });
+
+// let mainImg = document.querySelector("#mainImg");
+// let smallImg = document.querySelectorAll(".small-img");
+
+// smallImg[0].onclick = function () {
+//   // source of main img will be replace by source of small img
+//   mainImg.src = smallImg[0].src;
+// };
+
+// smallImg[1].onclick = function () {
+//   mainImg.src = smallImg[1].src;
+// };
+
+// smallImg[2].onclick = function () {
+//   mainImg.src = smallImg[2].src;
+// };
+
+// smallImg[3].onclick = function () {
+//   mainImg.src = smallImg[3].src;
+// };
+
+// Add to cart
+
+// let mainImg = document.querySelector("#mainImg");
+// let smallImg = document.querySelectorAll(".small-img");
+// mainImg.img = products[3].img;
+
+// smallImg[0].onclick = function(){
+//     // source of main img will be replace by source of small img
+//     mainImg.src = smallImg[0].src;
+// };
+
+// smallImg[1].onclick = function(){
+//     mainImg.src = smallImg[1].src;
+// };
+
+// smallImg[2].onclick = function(){
+//     mainImg.src = smallImg[2].src;
+// };
+
+// smallImg[3].onclick = function(){
+//     mainImg.src = smallImg[3].src;
+// };
+
+const singleProDetails = document.querySelector(".single-pro-details");
+const addToCart = document.querySelector(".add-to-cart");
+
+let temp = [];
+// let quantity = 1;
+let seen = false;
+
+// console.log(singleProDetails.childNodes);
+if (!cartContainer) {
+  addToCart.addEventListener("click", () => {
+    temp = JSON.parse(localStorage.getItem('temp'));
+    if(!temp){
+      temp = [];
+    }
+    const urlParams = new URLSearchParams(window.location.search);
+    const index = urlParams.get('index');
+    const imgForCart = `./img/products/f${parseInt(index)+1}.jpg`;
+  
+    for(let i = 0; i < temp.length; i++){
+      if(temp[i].id === parseInt(index)+1){
+        temp[i].quantity++;
+        seen = true;
+      }
+    }
+    if(seen === false){
+      temp.push({
+        quantity: 1,
+        id: parseInt(index)+1,
+        img: imgForCart,
+        title: "Cartoon Astronaut T-Shirts",
+        price: "$118",
+        subtotal: "$118",
+      });
+    }
+    localStorage.setItem("temp", JSON.stringify(temp));
+    alert('Added to Cart');
+  });
 }
 
 //********************** */ New Arrival Product
@@ -355,8 +455,6 @@ const blogs = [
   },
 ];
 
-var blogContainer = document.getElementById("blog");
-
 if (blogContainer) {
   window.addEventListener("DOMContentLoaded", () => {
     blogContainer.innerHTML = displayBlogs(count);
@@ -384,7 +482,7 @@ function displayBlogs(itemCount) {
 
 //*********************** */ cart products
 
-const addedProducts = [
+var addedProducts = [
   {
     id: 1,
     img: "./img/products/f1.jpg",
@@ -408,25 +506,31 @@ const addedProducts = [
   },
 ];
 
-const cartContainer = document.getElementById("t-rows");
+let val = JSON.parse(localStorage.getItem("temp"));
+
+// console.log(val);
 
 if (cartContainer) {
-  window.addEventListener("DOMContentLoaded", () => {
-    displayRows(addedProducts);
-  });
+  // window.addEventListener("DOMContentLoaded", () => {
+  //   displayRows(val);
+  // });
+
+  displayRows(val);
 }
 
-function displayRows(items) {
-  let displayROw = items.map((item) => {
+function displayRows(val) {
+  let displayRow = val.map((item)=>{
     return `<tr>
-        <td><a href=""><i class="far fa-times-circle"></i></a></td>
+        <td><a class='removebtn' href=""><i class="far fa-times-circle"></i></a></td>
         <td><img src=${item.img} alt=""></td>
         <td>${item.title}</td>
         <td>${item.price}</td>
-        <td><input type="number" value="1" min="0"></td>
+        <td><input type="number" value=${parseInt(item.quantity)} min="0"></td>
         <td>${item.subtotal}</td>
     </tr>`;
   });
 
-  cartContainer.innerHTML = displayROw.join("");
+  cartContainer.innerHTML = displayRow.join('');
 }
+
+// displayRows(val);

@@ -877,16 +877,16 @@ footer .copyright {
     text-align: center;
 }
 
-#pagination a {
-    text-decoration: none;
+#pagination button {
     background-color: #088178;
     padding: 15px 20px;
     border-radius: 12px;
     color: white;
-    font-weight: 600;
+    font-weight: 700;
+    margin: 2px;
 }
 
-#pagination a i {
+#pagination button i {
     font-size: 16px;
     font-weight: 600;
 }
