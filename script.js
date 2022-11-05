@@ -3,7 +3,7 @@ const toggleBtn = document.querySelector(".toggle-btn");
 const closeBtn = document.querySelector(".close-btn");
 const header = document.getElementById("header");
 const topLink = document.querySelector(".top-link");
-var blogContainer = document.getElementById("blog");
+const blogContainer = document.getElementById("blog");
 const cartContainer = document.getElementById("t-rows");
 
 //**************** */ toggle button
@@ -252,30 +252,31 @@ const singleProDetails = document.querySelector(".single-pro-details");
 const addToCart = document.querySelector(".add-to-cart");
 
 let temp = [];
-// let quantity = 1;
 let seen = false;
 
-// console.log(singleProDetails.childNodes);
-if (!cartContainer) {
+if (singleProDetails) {
   addToCart.addEventListener("click", () => {
-    temp = JSON.parse(localStorage.getItem('temp'));
-    if(!temp){
+    temp = JSON.parse(localStorage.getItem("temp"));
+
+    if (!temp) {
       temp = [];
+      // cartContainer.innerHTML = `<div>Nothing in the Cart</div>`;
     }
+
     const urlParams = new URLSearchParams(window.location.search);
-    const index = urlParams.get('index');
-    const imgForCart = `./img/products/f${parseInt(index)+1}.jpg`;
-  
-    for(let i = 0; i < temp.length; i++){
-      if(temp[i].id === parseInt(index)+1){
+    const index = urlParams.get("index");
+    const imgForCart = `./img/products/f${parseInt(index) + 1}.jpg`;
+
+    for (let i = 0; i < temp.length; i++) {
+      if (temp[i].id === parseInt(index) + 1) {
         temp[i].quantity++;
         seen = true;
       }
     }
-    if(seen === false){
+    if (seen === false) {
       temp.push({
         quantity: 1,
-        id: parseInt(index)+1,
+        id: parseInt(index) + 1,
         img: imgForCart,
         title: "Cartoon Astronaut T-Shirts",
         price: "$118",
@@ -283,7 +284,7 @@ if (!cartContainer) {
       });
     }
     localStorage.setItem("temp", JSON.stringify(temp));
-    alert('Added to Cart');
+    alert("Added to Cart");
   });
 }
 
@@ -473,11 +474,6 @@ function displayBlogs(itemCount) {
         </div>
         <h1>${blogs[itemCount].date}</h1>
     </div>`;
-
-  // const item = blogs[items];
-  // img.src
-
-  //   blogContainer.innerHTML = displayBlog.join("");
 }
 
 //*********************** */ cart products
@@ -511,17 +507,17 @@ let val = JSON.parse(localStorage.getItem("temp"));
 // console.log(val);
 
 if (cartContainer) {
-  // window.addEventListener("DOMContentLoaded", () => {
-  //   displayRows(val);
-  // });
+  window.addEventListener("DOMContentLoaded", () => {
+    displayRows(val);
+  });
 
-  displayRows(val);
+  // displayRows(val);
 }
 
 function displayRows(val) {
-  let displayRow = val.map((item)=>{
+  let displayRow = val.map((item) => {
     return `<tr>
-        <td><a class='removebtn' href=""><i class="far fa-times-circle"></i></a></td>
+        <td><a class="removebtn" href=""><i class="far fa-times-circle"></i></a></td>
         <td><img src=${item.img} alt=""></td>
         <td>${item.title}</td>
         <td>${item.price}</td>
@@ -530,7 +526,7 @@ function displayRows(val) {
     </tr>`;
   });
 
-  cartContainer.innerHTML = displayRow.join('');
+  cartContainer.innerHTML = displayRow.join("");
 }
 
-// displayRows(val);
+const removeFromCart = document.querySelectorAll(".removebtn");
